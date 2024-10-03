@@ -150,20 +150,17 @@ switch(note){
 }
 
 // // exo Bonus 4
-// let nMystere = (Math.random())*100;
-// let tentative = prompt("tentez de trouver le nombre mystère (entre zéro et 100)");
-// if(tentative==Math.floor(nMystere)){
-//     console.log("Vous avez gagné");
-// }
-// while (tentative!=Math.floor(nMystere))
-//     if (Math.floor(nMystere)>tentative){
-//         tentative = prompt("c'est plus");
-//     } else if (Math.floor(nMystere)<tentative){
-//         tentative = prompt("c'est moins");
-//     } 
-// if(tentative==Math.floor(nMystere)){
-//     console.log("Bravo! Vous avez gagné");
-// }
+let nMystere = (Math.random())*100;
+let tentative = prompt("tentez de trouver le nombre mystère (entre zéro et 100)");
+while (tentative!=Math.floor(nMystere))
+    if (Math.floor(nMystere)>tentative){
+        tentative = prompt("c'est plus");
+    } else if (Math.floor(nMystere)<tentative){
+        tentative = prompt("c'est moins");
+    } 
+if(tentative==Math.floor(nMystere)){
+    console.log("Bravo! Vous avez gagné");
+}
 
 // exo 19
 let tab = [10,2,64];
