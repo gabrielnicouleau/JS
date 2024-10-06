@@ -276,10 +276,68 @@ cette fonction fléchée elle va modifier le innerHTML ou innerText de la variab
 //TODO: 
 
 //!----EXO PREVENT DEFAULT-----!
-const googleLink = document.querySelector('#google')
-console.log('googleLink');
-const formulaire = document.querySelector('form');
-console.log(formulaire);
-googleLink.addEventListener("click", function(clickEvent){
-    clickEvent.preventDefault();
-});
+// const googleLink = document.querySelector('#google')
+// console.log('googleLink');
+// const formulaire = document.querySelector('form');
+// console.log(formulaire);
+// googleLink.addEventListener("click", function(clickEvent){
+//     clickEvent.preventDefault();
+// });
+
+
+
+
+//!-----EXO aprem JS-----!
+
+//!-----EXO phrase-----!
+//TODO: imaginez les ≠ variables qu’on pourrait retrouver dans une commande de pizza. Affichez en console une phrase qui remercie le client avec ses infos et qui résume la commande BONUS : Faire une interface dans le DOM pour afficher une UI de récapitulatif de commande
+
+// function priseDeCommande(){
+//     let userName = prompt("renseignez votre nom:");
+//     let userContact = prompt ("renseignez votre numero de téléphone:");
+//     let userAdresse = prompt ("renseignez votre adresse");
+//     let userModeDeCommande = prompt ("sur place, à emporter ou en livraison?");
+//     let userModeDePaiement = prompt ("comment souhaitez-vous regler?");
+//     let userCommande = prompt ("quel est votre commande");
+
+//     let userData = {
+//             name: userName,
+//             contact: userContact,
+//             adresse: userAdresse,
+//             modeDeCommande: userModeDeCommande,
+//             paiement: userModeDePaiement,
+//             commande: userCommande
+//     };
+//     let userReponse =Object.values(userData);
+//     console.log(`${userReponse[0]},
+//     votre commande: ${userReponse[5]} a bien été prise en compte
+//     votre adresse est: ${userReponse[2]}
+//     votre numéro de téléphone est: ${userReponse[1]}
+//     vous souhaitez que votre commande soit: ${userReponse[3]}
+//     et souhaitez regler: ${userReponse[4]}`);
+
+//     let message = document.createElement('p');
+    // message.style.innerText = `${userReponse[0]},
+    // votre commande: ${userReponse[5]} a bien été prise en compte
+    // votre adresse est: ${userReponse[2]}
+    // votre numéro de téléphone est: ${userReponse[1]}
+    // vous souhaitez que votre commande soit: ${userReponse[3]}
+    // et souhaitez regler: ${userReponse[4]}`;
+    // document.body.append(message);
+
+// }
+// priseDeCommande();
+
+
+//!-----EXO Quizz VAR: 
+//TODO: Pour comprendre la ≠ entre var, let et const comme pour ce qu’on avait fait pour le scope. mode ROLE PLAY, vous avez de review de code à faire avec des réponses à envoyer à un nouveau stagiaire. (Soyez exhaustif et bienveillant)
+// Lorsqu'il est utilisé dans un bloc, let permet de limiter la portée de la variable à ce bloc. var quant à lui limite la portée de la variable à la fonction et est aujourd'hui déprécié.
+// de plus, On utilisera var ou let pour la variable, dont la valeur évolue durant l'exécution du scope au sein duquel elle est visible. On utilisera const pour la variable, dont la valeur doit rester constante tout au long de l'exécution du scope au sein duquel elle est visible.
+
+
+//!-----Exo try...catch-----!
+try {
+    
+} catch (error) {
+    
+}
