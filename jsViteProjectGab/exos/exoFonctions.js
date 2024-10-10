@@ -300,7 +300,7 @@ cette fonction fléchée elle va modifier le innerHTML ou innerText de la variab
 //     let userModeDePaiement = prompt ("comment souhaitez-vous regler?");
 //     let userCommande = prompt ("quel est votre commande");
 
-//     let userData = {
+//     const userData = {
 //             name: userName,
 //             contact: userContact,
 //             adresse: userAdresse,
@@ -308,7 +308,7 @@ cette fonction fléchée elle va modifier le innerHTML ou innerText de la variab
 //             paiement: userModeDePaiement,
 //             commande: userCommande
 //     };
-//     let userReponse =Object.values(userData);
+//     const userReponse =Object.values(userData);
 //     console.log(`${userReponse[0]},
 //     votre commande: ${userReponse[5]} a bien été prise en compte
 //     votre adresse est: ${userReponse[2]}
@@ -316,15 +316,15 @@ cette fonction fléchée elle va modifier le innerHTML ou innerText de la variab
 //     vous souhaitez que votre commande soit: ${userReponse[3]}
 //     et souhaitez regler: ${userReponse[4]}`);
 
-//     let message = document.createElement('p');
-    // message.style.innerText = `${userReponse[0]},
-    // votre commande: ${userReponse[5]} a bien été prise en compte
-    // votre adresse est: ${userReponse[2]}
-    // votre numéro de téléphone est: ${userReponse[1]}
-    // vous souhaitez que votre commande soit: ${userReponse[3]}
-    // et souhaitez regler: ${userReponse[4]}`;
-    // document.body.append(message);
-
+//     const message = document.createElement('p');
+//     message.style.color = "black";
+//     message.innerText = `${userReponse[0]},
+//     votre commande: ${userReponse[5]} a bien été prise en compte
+//     votre adresse est: ${userReponse[2]}
+//     votre numéro de téléphone est: ${userReponse[1]}
+//     vous souhaitez que votre commande soit: ${userReponse[3]}
+//     et souhaitez regler: ${userReponse[4]}`;
+//     document.querySelector('#commande').append(message);
 // }
 // priseDeCommande();
 
@@ -335,9 +335,359 @@ cette fonction fléchée elle va modifier le innerHTML ou innerText de la variab
 // de plus, On utilisera var ou let pour la variable, dont la valeur évolue durant l'exécution du scope au sein duquel elle est visible. On utilisera const pour la variable, dont la valeur doit rester constante tout au long de l'exécution du scope au sein duquel elle est visible.
 
 
-//!-----Exo try...catch-----!
-try {
+//!-----exo import-export(hello.js)-----!
+//TODO: importer le script hello.js en modulaire.
+// import '../scripts/hello';
+// import { moduleHello } from '../scripts/hello';
+// moduleHello("Gab");
+
+
+//!-----EXO zone de texte-----!
+//TODO:faire en sorte qu'une zone de texte remplisse une div sur la meme page au fur et à mesure que l'on tape dedans.
+// let userText = document.querySelector('#zoneE'); //On lie la variable à l'imput
+// let userMess = document.querySelector('#zoneA'); //On lie la variable à la div
+// console.log(userText); //on verifie que la variable prend bien en compte l'input
+// console.log(userMess); //on verifie que la variable prend bien en compte la div
+// userText.value="exemple" //on verifie que la valeur du champs change
+// userText.addEventListener('keyup',()=>{ //on lui demande pour chaque touche du clavier cliquée:
+//     console.log("coucou, ça marche!") //on s'assure que l'addEventListener prend en compte le keyup
+//     userMess.innerText = userText.value; //on lui demande de remplir le texte de la div ave la valeur de l'input
+// });
+
+
+//!-----Exo blocage du bouton-----!
+//TODO:faire en sorte que le bouton d'envoie se désactive sitot que l'on dépasse 5 caractères dans la zone de texte.
+// let bouton = document.querySelector('#bouton'); //On lie la variable à l'imput submit
+// let aera = document.querySelector('#aera'); //On lie la variable à la balise <textarea>
+// aera.addEventListener('keyup',()=>{ //on lui demande pour chaque touche du clavier cliquée:
+//     console.log("event keyup"); //de s'assurer que l'addEventListener prend en compte le keyup
+//     console.log(`longueur du texte: ${aera.value.length}`); //de vérifier que l'on arrive à cibler la longueur de la zone de texte et quelle est sa valeur.
+//     let longueurText = aera.value.length; // on met la longueur de la balise <textarea> dans une variable
+//     if (longueurText>5){
+//         bouton.disabled = true; //si elle est supérieur à 5, on désactive l'imput submit
+//         bouton.value = "🚫​"; //et on change la valeur de l'input submit pour qu'il affiche un emoticon
+//     } else {
+//         bouton.disabled = false; // sinon, on laisse l'input submit activé
+//         bouton.value = "Envoyer"; //et on change la valeur de l'input submit pour qu'il affiche la valeur de base
+//     }
+//     console.log(bouton.disabled) // on vérifie l'état de l'input submit
+// });
+
+
+//!-----EXO MARKED DOWN et vanta-----!
+//TODO:lier le html à la librairie marked.js et vanta.js, puis vérifier si il la prend bien en compte quand on tape dans la zone de texte et verifier si l'image de la librairie vanta s'affiche bien
+// let userText = document.querySelector('#zoneE'); //? On reprend l'exercice zone de texte
+// let userMess = document.querySelector('#zoneA'); 
+// console.log(userText); 
+// console.log(userMess); 
+// userText.value="exemple" 
+// userText.addEventListener('keyup',()=>{ 
+//     console.log("coucou, ça marche!") 
+//     userMess.innerHTML = marked(userText.value); //?on lui demande de remplir la div ave la valeur de la zone de texte en prenant en compte la librairie marketjs
+// });
+
+// VANTA.CLOUDS({   //?librairie vanta appliquée
+//     el: '#container',
+//     mouseControls: true,
+//     touchControls: true,
+//     gyroControls: false,
+//     minHeight: 200,
+//     minWidth: 200,
+//     speed: 1.90
+//   });
+
+//?---texte à taper dans le text Area pour vérifier si ça marche (demo marked.js)---!
+// Marked - Markdown Parser
+// ========================
+
+// [Marked] lets you convert [Markdown] into HTML.  Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML.  This demo page will let you type anything you like and see how it gets converted.  Live.  No more waiting around.
+
+// How To Use The Demo
+// -------------------
+
+// 1. Type in stuff on the left.
+// 2. See the live updates on the right.
+
+// That's it.  Pretty simple.  There's also a drop-down option above to switch between various views:
+
+// - **Preview:**  A live display of the generated HTML as it would render in a browser.
+// - **HTML Source:**  The generated HTML before your browser makes it pretty.
+// - **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+// - **Quick Reference:**  A brief run-down of how to format things using markdown.
+
+// Why Markdown?
+// -------------
+
+// It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [markdown] says,
+
+// > The overriding design goal for Markdown's
+// > formatting syntax is to make it as readable
+// > as possible. The idea is that a
+// > Markdown-formatted document should be
+// > publishable as-is, as plain text, without
+// > looking like it's been marked up with tags
+// > or formatting instructions.
+
+// Ready to start writing?  Either start changing stuff on the left or
+// [clear everything](/demo/?text=) with a simple click.
+
+// [Marked]: https://github.com/markedjs/marked/
+// [Markdown]: http://daringfireball.net/projects/markdown/
+//?---Fin texte à taper dans le text Area pour vérifier si ça marche (demo marked.js)---!
+
+
+//!-----EXO web storage-----!
+//TODO: faire en sorte que ce que l'on tape dans la zone de texte se sauvegarde dans le local storage et puisse etre réutilisé dans le paragraphe même quand on rafraichi la page.
+// let monTxt = document.querySelector('#zoneTxt'); //on attribue la zone de texte à la variable monTxt
+// let rendu = document.querySelector('#paragraphe'); //on attribue le paragraphe à la variable rendu
+// monTxt.value = localStorage.getItem("monSuperTexte"); //chercher la valeur de la clé monSuperTexte (avant de l'avoir défini la première fois) dans la mémoire locale et l'afficher dans ma zone de texte //? ce qui va le réafficher quand on rafraichi la page car on le lui demande avant.
+// localStorage.setItem("monSuperTexte",monTxt.value); //définir ma clé monSuperTexte comme ayant pour valeur celle de ma zone de texte.
+// if (monTxt.value!=undefined){  //si la valeur de ma zone de texte est définie:
+//     rendu.innerText = localStorage.getItem("monSuperTexte"); //afficher dans l'innerText du paragraphe, la valeur de monSuperTexte
+// };
+// monTxt.addEventListener('keyup',()=>{  //pour chaque touche du clavier qui est relachée:
+//     localStorage.setItem("monSuperTexte",monTxt.value); //enregister dans la clé monSuperTexte la valeur de ma zone de texte
+//     rendu.innerText = monTxt.value; // afficher dans le paragraphe la valeur de ma zone de texte
+// });
+
+
+//!----EXO API asynchrone-----!
+//TODO: comprendre la notion d'API asynchrone grace à l'exemple de l'API pokemon de tyradex
+// let imageP = document.getElementsByTagName('img')[0]; //on recupere l'emplacement pour l'image dans le HTML et on lui attribut la variable imageP
+// let apiDiv = document.getElementById('apiDiv'); //on récupère le titre H1 et on lui attribut la variable apiDiv
+
+// const contactApiPokemon =  async()=>{ //on fabrique une constante qui sera une fonction asynchrone dans laquelle:
+//     const rawData =  await fetch('https://tyradex.vercel.app/api/v1/pokemon/corvaillus') //on récupère et attend les données de la page consacrée à cornvaillus sur l'API de tyradex
+//     console.log(rawData); //on vérifie les données brutes que l'on récupère
+//     const transformedData = await rawData.json(); //on créé une constante transformedData à laquelle on attribut et attend les données json brutes
+//     console.log(transformedData); //on vérifie les données que l'on obtien dans notre constante
+//     imageP.src = transformedData.sprites.regular //on en récupère l'image du pokemon que l'on met dans la variable imageP
+//     apiDiv.innerText = transformedData.name.fr //on récupère le nom du pokemon que l'on met dans apiDiv
+//     apiDiv.innerText += `, pokemon de type: ${transformedData.egg_groups}` //on récupère le type du pokemon que l'on met dans apiDiv
+// }
+
+// contactApiPokemon(); //on lance la contante qui se comporte comme une fonction.
+
+//!----EXO fetch API-----!
+//TODO:Afficher le nom des 20 premiers pokemons grace à l'API fourni
+// let listePok = document.getElementById('container'); //j'attribue la div container à ma variable listePok
+// listePok.style.backgroundColor = "lightblue" // je la configure un peu (lui met un background)
+// const contactApi = async()=>{ //je créé une constante sous forme de fonction asynchrone que j'appelle contactApi dans laquelle:
+//     const rawData = await fetch('https://pokeapi.co/api/v2/pokemon'); //je créé une constante rawData qui prend ses données dans une API et attend sa reponse
+//     console.log(rawData); //je vérifie ce à quoi correspond rawData
+//     const transData = await rawData.json(); //je créé une constante TransData qui récupère et attend les données bruts en Json
+//     console.log(transData); //je vérifie ce à quoi correspond transData
+//     for (let i=0;i<transData.results.length;i++){ //Pour chaque tour d'une boucle de la longueur du tableau result de la variable transData:
+//         let newLine = document.createElement('div'); //je créé une nouvelle div dans le document que j'apelle newLine
+//         newLine.innerHTML = transData.results[i].name; //dans le HTML de newLine, j'écris la valeur de la propriété name de l'objet correspondant à la case i du tableau results de transData
+//         listePok.append(newLine); //j'insere newLine dans listePok (la div container)
+//     }
+// }
+// contactApi(); //j'apelle la fonction contactApi
+
+//TODO: la même chose avec la deuxième API fourni (tous les pokemons)
+// let listePok = document.getElementById('container'); //j'attribut ma div container à la variable listePok
+// listePok.style.backgroundColor = "lightblue"; //je la configure un peu (met le texte au centre, une couleur en fond et change celle du texte)
+// listePok.style.textAlign = "center";
+// listePok.style.color = "royalblue";
+// const contactApi = async()=>{ //je créé une constante sous forme de fonction asynchrone que j'appelle contactApi dans laquelle:
+//     const rawData = await fetch('https://tyradex.vercel.app/api/v1/pokemon'); //je créé une constante rawData qui prend ses données dans une API et attend sa reponse
+//     console.log(rawData); //je vérifie ce à quoi correspond rawData
+//     const transData = await rawData.json(); //je créé une constante TransData qui récupère et attend les données bruts en Json
+//     console.log(transData); //je vérifie ce à quoi correspond transData
+//     for (let i=0;i<transData.length;i++){ //Pour chaque tour d'une boucle de la longueur du tableau de la variable transData:
+//         let newLine = document.createElement('h3'); //je créé un nouveau titre h3 dans le document que j'apelle newLine
+//         newLine.innerText = transData[i].name.fr; //dans le innerText de newLine, j'ecris la valeur de la propriété fr de l'objet name, propriété de l'objet correspondant à la case i du tableau de transData
+//         listePok.append(newLine); // j'insère newLine dans listepok (la div container)
+//         let newImg = document.createElement('img'); //je créé une nouvelle image dans le document que j'apelle newImg
+//         newImg.src = transData[i].sprites.regular;//je lui attribut comme source, la valeur de la propriété regular de l'objet sprite, propriété de l'objet correspondant à la case i du tableau de transData
+//         listePok.append(newImg);// j'insère newImg dans listepok (la div container)
+//     };
+// };
+// contactApi(); //j'apelle la fonction contactApi
+
+//TODO: la même chose avec l'API magic
+// let listeCard = document.getElementById('container'); //j'attribue la div container à ma variable listeCard
+// listeCard.style.backgroundColor = "lightblue" // je la configure un peu ()
+// const contactApi = async()=>{ //je créé une constante sous forme de fonction asynchrone que j'appelle contactApi dans laquelle:
+//     const rawData = await fetch('https://api.magicthegathering.io/v1/cards'); //je créé une constante rawData qui prend ses données dans une API et attend sa reponse
+//     console.log(rawData); //je vérifie ce à quoi correspond rawData
+//     const transData = await rawData.json(); //je créé une constante TransData qui récupère et attend les données bruts en Json
+//     console.log(transData); //je vérifie ce à quoi correspond transData
+//     for (let i=0;i<transData.cards.length;i++){ //Pour chaque tour d'une boucle de la longueur du tableau cards de la variable transData:
+//         let newLine = document.createElement('h3'); //je créé un nouveau titre h3 dans le document que j'apelle newLine
+//         newLine.innerText = transData.cards[i].name; //je met dans son texte la valeur de la propriété name de l'objet correspondant à la case i du tableau cards de transData
+//         listeCard.append(newLine); //j'insère newLine dans listeCard (la div container)
+//         let newImg = document.createElement('img'); //je créé une nouvelle image dans le document que j'apelle newImg
+//         newImg.src = transData.cards[i].imageUrl; //je lui attribue en source la valeur de la la propriété imageUrl de l'objet correspondant à la case i du tableau cards de transData
+//         newImg.alt = "image non disponible"; //je configure le alt de l'image NewImg
+//         listeCard.append(newImg);// j'insère newImg dans listeCard (la div container)
+//     }
+// }
+// contactApi(); //j'apelle la fonction contactApi
+
+
+//!-----Exo classe/instance-----!
+
+//!exemple de classe et instance!
+// class UserProfile {
+//     //! Pas besoin de déclarer function devant le constructor et méthodes
+//     constructor(nameUser, mailUser, phoneUser) { //moule dans lequel on va fabriquer nos gateau
+//     //?Attribut en IN MODE indispensable pour créer des new UserProfile
+//     this.nameUser = nameUser;
+//     this.mailUser = mailUser;
+//     this.phoneUser = phoneUser;
+//     //?Attribut en outMode ( qui ne sont pas indispensables à la construction de la classe)
+//     this.contact = phoneUser + mailUser;
+//     this.resume = this.getProfileInfo();
+//     //?this._nom = nom;  
+//     }
+//     getPhone(){
+//         return this.phoneUser;
+//     }
+//     getProfileInfo() {
+//     console.log('this ',this);
+//     return `infos de l'utilisateur : 
+//             son nom : ${this.nameUser}
+//             son mail : ${this.mailUser}
+//             son Tél : ${this.phoneUser}`;
+//     }
+// }
+// const exampleUser2 = new UserProfile("Sarah", "sarah@gmail.com", "063736252"); // gateau qui va utiliser notre moule créé au dessus
+// exampleUser2.getProfileInfo();
+
+
+//TODO: créer une classe nous permettant de calculer des IMC
+// class Imc{ //on construit une nouvelle classe nommée Imc
+//     constructor (nomUser,poidUser,tailleUser){ //elle comprend 3 paramètres donnés dans cet ordre
+//         this.nomUser = nomUser; //pour chaque instance, le paramettre correspond à son équivalent tel qu'il est décrit dans la déclaration de classe
+//         this.poidUser = poidUser;
+//         this.tailleUser = tailleUser;
+//         this.imc =this.calculImc(); //le parametre imc correspond au return de la fonction calculImc
+//     }
+//     calculImc(){ //on crée une fonction nommé calculImc dans laquelle:
+//         let calcul = (this.poidUser/(this.tailleUser**2)); //la variable calcul est égale au poid/taille² pour l'instance ciblée de la classe Imc
+//         return calcul.toFixed(2); // on retourne le résultat de la variable calcul
+//     }
+//     display(){ //on crée une fonction display dans laquelle:
+//         console.log(`${this.nomUser}, votre poid est de ${this.poidUser}kg pour ${this.tailleUser}m. votre IMC est de ${this.imc}`); //on affiche un message de recap pour l'instance
+//     }
     
-} catch (error) {
-    
-}
+// }
+// let list = [ //on utilise la liste de nouvelles instances fournie dans un tableau nommé list
+//     new Imc("Sébastien Chabal", 135, 1.7),
+//     new Imc("Escaladeuse", 45, 1.68),
+//     new Imc("JOJO ", 300, 2),
+//     new Imc("Gontrand ", 90, 1.75),
+//     new Imc("Colonel Clock ", 200, 1.75),
+//     new Imc("JOsiane de la Vega", 99, 1.55)
+// ];
+// list.forEach(element => { //pour chaque élément des cases du tableau list, on va:
+//     element.display(); //appliquer la fonction display à l'élément
+//     const message = document.createElement('H3'); //créer un nouveau titre H3 dans le document HTML
+//     message.innerText = `${element.nomUser}, votre poid est de ${element.poidUser}kg pour ${element.tailleUser}m. votre IMC est de ${element.imc}`; //écrire le message du display
+//     document.querySelector('#imc').append(message); //l'insérer dans la div d'id imc du document HTML
+// });
+
+
+//!-----EXO regexp-----!
+//TODO: 
+// const email = document.querySelector('#email');
+// const passwordN = document.querySelector('#password');
+// const charDecimal = /\d/;
+// const charSpecial = /[$&@!]/;
+
+// email.addEventListener('keyup',()=>{  
+//     const emailRegex = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+//     emailRegex.test(email.value);
+//     if (emailRegex.test(email.value)){ // pareil que if (emailRegex.test(email.value) == true)
+//         email.style.backgroundColor = "green";
+//     }
+//     else {
+//         email.style.backgroundColor = "red";
+//     }
+// });
+
+// passwordN.addEventListener('keyup',()=>{
+//     const charDecimal = /\d/;
+//     const charSpecial = /[$&@!]/;
+//     password.value.match(charDecimal);
+//     password.value.match(charSpecial);
+//     console.log(password.value.match(charDecimal),password.value.match(charSpecial))
+// });
+
+
+
+//!-----EXO -----!
+//TODO:faire le bilan comptable de l'entreprise
+// console.log('------------------MA PME-----------------');
+// class Employee {
+//     constructor(nom, prenom, age, salaireMensuel) {
+//     this._nom = nom;    
+//     this._prenom = prenom;
+//     this._age = age;
+//     this._salaireMensuel = salaireMensuel;
+//     this._cout = this.calculCout();// Calcul cout annuel de l'employé :attribut en outMode
+//     }
+// // me servira à passer le cout d 1 employé dans la classe PME
+//     getCout() {
+//         return this._cout;
+//     }
+// //calcul cout total d 1 salarié
+//     calculCout() {    
+//     const NB_MOIS_SAL = 12; 
+//     const LA_TAXE = 0.9;     
+//     //Un léger calcul
+//     return this._salaireMensuel * NB_MOIS_SAL * (1 + LA_TAXE );
+//     }
+// }
+
+// class Pme {
+//     constructor(nom, equipe, ventes, coutsFixes, achats) {
+//         this._nom = nom;
+//         this._equipe = equipe;
+//         this._cout = coutsFixes + achats;// On peut assigner directement un calcul ici
+//         this._ventes = ventes;
+//         this._bilan = 0;    // attribut en OutMode a calculer
+//     }
+
+//     bilanCalculed () {  
+//         console.log(this._equipe);      
+//     let cumulEquipe = 0;
+//     console.log(`${this._nom} : Cout Initial : ${this._cout}`);
+
+// //Boucle qui parcourt le tableau des salariés (equipe)
+// //Sur chaque salarié parcouru dans le tableau, on récupère et cumule le cout de ce Salarié
+//     for (let unSalarie of this._equipe){ 
+//             cumulEquipe += unSalarie.getCout();
+//         }
+
+//     console.log(`${this._nom} : Cout Total Equipe : ${cumulEquipe}`);
+//     //Ensuite dans les couts de l'entreprise on cumul le cout de toute l'équipe
+//     this._cout += cumulEquipe;
+//     console.log(`${this._nom} : VENTES : ${this._ventes}`);
+
+//     this._bilan = this._ventes - this._cout;
+//     console.log(`${this._nom} : BILAN : ${this._bilan}`);
+//     }
+// }
+
+// const pme = new Pme (
+// //Le nom entreprise
+//     "Ma Petite Entreprise - ", 
+//     //L'equipe de salariés (un tableau)
+//     [new Employee ("Duval", "Paul", 30, 2000),
+//     new Employee ("Durand", "Alain", 40, 3000),
+//     new Employee ("Dois", "Sylvia", 50, 4000),],
+//     //le revenu , frais fixe, frais d'achat
+//     300000,
+//     20000,
+//     50000);
+//     console.log(pme);
+
+// pme.bilanCalculed();
+
+
+//!-----EXO-----!
+//TODO:
+
