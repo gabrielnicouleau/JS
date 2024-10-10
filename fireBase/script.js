@@ -1,10 +1,17 @@
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDHr1HtJMSd6K9be-TuJ2vc3shXoHDT6MA",
-    authDomain: "monsuperprojet-4533b.firebaseapp.com",
-    projectId: "monsuperprojet-4533b",
-    storageBucket: "monsuperprojet-4533b.appspot.com",
-    messagingSenderId: "517948271790",
-    appId: "1:517948271790:web:1376ea7fdf13449061513f"
+    apiKey: "AIzaSyAnYwTSx73MzdAcOwlAxwDwX0lbx3Ufd9k",
+    authDomain: "groupeevan-c844c.firebaseapp.com",
+    databaseURL: "https://groupeevan-c844c-default-rtdb.firebaseio.com",
+    projectId: "groupeevan-c844c",
+    storageBucket: "groupeevan-c844c.appspot.com",
+    messagingSenderId: "330994610716",
+    appId: "1:330994610716:web:27a9b72e943814572d25d9"
 };
 
 //* CREATE (AJOUTER)
@@ -44,6 +51,16 @@ const userDetailUI = document.getElementById("user-detail");
 readUserData();
 
 function addUserBtnClicked() {
+    let addUserInputsUI = document.getElementsByClassName("user-input"); //onrécupère tous les imputs du document ayant 'user-input' dans leur classes
+    let newUser = {}; // on créé un objet vide nommé newUser
+    for(let i=0;i<addUserInputsUI.length;i++){ //Dans une boucle de la longueur des imputs visés par adduserInputsUI:
+        let key = addUserInputsUI[i].getAttribute('data-key'); //On récupère l'attribut 'data-key' de l'élément i de addUserInputsUI que l'on nomme key
+        let value = addUserInputsUI[i].value; //On récupère la valeur de l'élément i de addUserInputsUI que l'on nomme value
+        newUser[key] = value; //on remplis l'objet newUser avec en élément 'key' la valeur récupérée plus haut.
+    }
+    usersRef.push(newUser); //On envoie les données de newUser sur la base de donnée.
+    console.log(`utilisateur sauvegardé`);
+    console.log(`nom: ${newUser.name} age: ${newUser.age}`);
 
 };
 
